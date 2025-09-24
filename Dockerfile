@@ -16,9 +16,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-download the Qwen-VL model during build (saves startup time)  
-RUN python -c "from transformers import AutoModel, AutoTokenizer; AutoModel.from_pretrained('Qwen/Qwen-VL-Chat', trust_remote_code=True); AutoTokenizer.from_pretrained('Qwen/Qwen-VL-Chat', trust_remote_code=True)"
-
 # Copy application code
 COPY . .
 
